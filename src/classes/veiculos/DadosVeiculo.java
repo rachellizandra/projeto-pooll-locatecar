@@ -11,7 +11,7 @@ public class DadosVeiculo implements VeiculoRepository {
     public void buscar(List<Veiculo> lista, String nomeBusca) {
         System.out.println("Resultado da busca por: "+nomeBusca);
         List<Veiculo> resultadoVeiculos = lista.stream()
-                .filter(veiculo -> nomeBusca.equals(veiculo.getModelo())).toList();
+                .filter(veiculo -> nomeBusca.equalsIgnoreCase(veiculo.getModelo())).toList();
 
         if(!resultadoVeiculos.isEmpty()) {
             resultadoVeiculos.forEach(veiculo -> System.out.println("Placa: "+veiculo.getPlaca()));

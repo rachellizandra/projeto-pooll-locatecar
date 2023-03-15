@@ -1,4 +1,6 @@
-import classes.Locacao;
+import classes.locacao.Aluguel;
+import classes.locacao.Devolucao;
+import classes.locacao.Locacao;
 import classes.clientes.ClientePF;
 import classes.clientes.ClientePJ;
 import classes.clientes.DadosCliente;
@@ -9,12 +11,17 @@ import classes.veiculos.Moto;
 import enuns.TipoDocumento;
 import enuns.TipoVeiculo;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Locale;
+
 public class Main {
     public static void main(String[] args) {
 
         DadosCliente bancoClientes = new DadosCliente();
         DadosVeiculo bancoVeiculos = new DadosVeiculo();
-        Locacao locacao = new Locacao();
+        Aluguel locacao = new Aluguel();
+        Devolucao devolucao = new Devolucao();
 
         //CADASTRAR CLIENTE
         ClientePF rachel = new ClientePF("Rachel", "25", TipoDocumento.tipoDocumento.CPF, "56985748575", "259595", "RUA CANADÁ, 258");
@@ -72,5 +79,26 @@ public class Main {
 
         //BUSCANDO VEICULO QUE NAO EXISTE
         bancoVeiculos.buscar(bancoVeiculos.listaDeVeiculos,"Ferrari");
+
+        //DEVOLVER VEICULO PF
+//        locacao.alugar(fiesta,rachel, LocalDateTime.of(2023,1,2,12,30), Locale.JAPAN);
+//        //DADOS DO ALUGUEL: PESSOA FISICA / 10 DIAS / VEICULO PEQUENO -> 100 X 10 - (100 X 10 x 0.05) = 950
+//        locacao.devolver(fiesta,rachel,LocalDateTime.of(2023,1,12,12,30),Locale.JAPAN);
+//
+//        //DEVOLVER VEICULO PJ
+//        locacao.alugar(blazer,padaria,LocalDateTime.of(2023,1,1,15,0),Locale.ITALY);
+//        //DADOS DO ALUGUEL: PESSOA JURIDICA / 5 DIAS / VEICULO SUV = 200 * 5 - (200 * 5 * 0,1) = 900
+//        locacao.devolver(blazer,padaria,LocalDateTime.of(2023,1,6,15,0),Locale.ITALY);
+//        //TENTANDO DEVOLVER VEICULO NÃO ALUGADO
+//        locacao.devolver(suzuki,rachel,LocalDateTime.of(2023,1,12,12,30),Locale.JAPAN);
+
+        //VERIFICAR PORQUE NA DATA ESTÁ SAINDO O ENDEREÇO DE MEMÓRIA
+        locacao.alugar(scania, pedro, LocalDateTime.of(2023,1,1,15,0), Locale.ITALY);
+        locacao.alugar(fiesta, rachel, LocalDateTime.of(2023,2,1,15,0), Locale.CANADA);
+        locacao.listarVeiculosAlugados();
+        BigDecimal valorAluguel = locacao.calcularAluguel(pedro, TipoVeiculo.tipoVeiculo.MEDIO, LocalDateTime.of(2023,1,1,15,0), LocalDateTime.of(2023,1,2,15,0));
+        System.out.println("Valor do aluguel: " + valorAluguel);
+        devolucao.devolver(fiesta, rachel, LocalDateTime.of(2023,2,1,15,0), LocalDateTime.of(2023,3,1,15,0), Locale.CANADA);
+        locacao.listarVeiculosAlugados();
     }
 }
