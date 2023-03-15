@@ -1,18 +1,12 @@
 package classes.clientes;
 
+import enuns.TipoDocumento;
+
 public class ClientePJ extends Cliente {
-    private String cnpj;
 
-    public ClientePJ(String nome, String id, String cnpj) {
-        super(nome, id);
-        this.cnpj = cnpj;
+    public ClientePJ(String nome, String id, TipoDocumento.tipoDocumento tipoDocumento, String numeroDocumento, String telefone, String endereco) {
+        super(nome, id, numeroDocumento, telefone, endereco);
+        this.setTipoDocumento(tipoDocumento);
     }
 
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
 }

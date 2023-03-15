@@ -1,19 +1,28 @@
 package classes.clientes;
 
+import enuns.TipoDocumento;
+
 public abstract class Cliente {
     private String nome;
     private String id;
+    private TipoDocumento.tipoDocumento tipoDocumento;
+    private String numeroDocumento;
+    private String telefone;
+    private String endereco;
 
-    public Cliente(String nome, String id) {
+    public Cliente(String nome, String id, String numeroDocumento, String telefone, String endereco) {
         this.nome = nome;
         this.id = id;
+        this.numeroDocumento = numeroDocumento;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
-    public String getName() {
+    public String getNome() {
         return nome;
     }
 
-    public void setName(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -21,15 +30,35 @@ public abstract class Cliente {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public TipoDocumento.tipoDocumento getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "nome='" + nome + '\'' +
-                ", id='" + id + '\'' +
-                '}';
+    public void setTipoDocumento(TipoDocumento.tipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
