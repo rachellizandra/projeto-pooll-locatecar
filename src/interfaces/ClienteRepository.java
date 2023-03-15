@@ -1,6 +1,7 @@
 package interfaces;
 
 import classes.clientes.Cliente;
+import enuns.TipoDocumento;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface ClienteRepository {
 
     <T extends Cliente> void atualizar(T cliente1, T cliente2);
 
-    Cliente consultar(String numeroDocumento);
+    Cliente consultar(TipoDocumento.tipoDocumento tipo, String numeroDocumento);
 
     List<Cliente> listarTodos();
 }
