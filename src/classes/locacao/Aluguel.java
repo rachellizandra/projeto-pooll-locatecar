@@ -10,6 +10,7 @@ import interfaces.RepositoryAluguel;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
 
@@ -22,6 +23,11 @@ public class Aluguel extends Locacao implements RepositoryAluguel {
     private static final BigDecimal BASE_CALC_VEIC_SUV = BigDecimal.valueOf(200);
 
     Validacao validacaoData = new Validacao();
+
+    public Aluguel(HashMap<Veiculo, Cliente> locadora) {
+        super(locadora);
+    }
+
     @Override
     public void alugar(Veiculo veiculo, Cliente cliente, LocalDateTime dataLocacao, Locale local) {
         if (locadora.containsKey(veiculo) && !veiculo.getDisponivel()) {

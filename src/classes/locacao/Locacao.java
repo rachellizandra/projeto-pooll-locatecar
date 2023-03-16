@@ -9,13 +9,13 @@ import java.util.Locale;
 
 public class Locacao {
 
-    HashMap<Veiculo, Cliente> locadora;
+    protected final HashMap<Veiculo, Cliente> locadora;
     private LocalDateTime dataLocacao;
     private LocalDateTime dataDevolucao;
     private Locale local;
 
-    public Locacao() {
-        locadora = new HashMap<>();
+    public Locacao(HashMap<Veiculo, Cliente> locadora) {
+        this.locadora = locadora;
     }
 
     public LocalDateTime getDataLocacao() {
