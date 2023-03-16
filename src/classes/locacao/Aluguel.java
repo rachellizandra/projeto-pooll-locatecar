@@ -85,4 +85,6 @@ public class Aluguel extends Locacao implements RepositoryAluguel {
         }
         return valorSemDesconto.subtract(valorSemDesconto.multiply(desconto));
     }
+
+
 }
