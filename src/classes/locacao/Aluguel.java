@@ -46,7 +46,7 @@ public class Aluguel extends Locacao implements RepositoryAluguel {
         } else {
             for (Veiculo alugado : alugados) {
                 if (alugado != null)
-                    System.out.println(alugado+ "\nData: "+ locadora.get(alugado));
+                    System.out.println(alugado+ "\nDados do cliente: "+ locadora.get(alugado));
                 System.out.println("--------------------");
             }
         }
