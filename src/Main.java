@@ -1,18 +1,17 @@
+import classes.clientes.Cliente;
 import classes.locacao.Aluguel;
 import classes.locacao.Devolucao;
 import classes.locacao.Locacao;
 import classes.clientes.ClientePF;
 import classes.clientes.ClientePJ;
 import classes.clientes.DadosCliente;
-import classes.veiculos.Caminhao;
-import classes.veiculos.Carro;
-import classes.veiculos.DadosVeiculo;
-import classes.veiculos.Moto;
+import classes.veiculos.*;
 import enuns.TipoDocumento;
 import enuns.TipoVeiculo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class Main {
@@ -20,8 +19,10 @@ public class Main {
 
         DadosCliente bancoClientes = new DadosCliente();
         DadosVeiculo bancoVeiculos = new DadosVeiculo();
-        Aluguel locacao = new Aluguel();
-        Devolucao devolucao = new Devolucao();
+
+        HashMap<Veiculo, Cliente> locadora = new HashMap<>();
+        Aluguel locacao = new Aluguel(locadora);
+        Devolucao devolucao = new Devolucao(locadora);
 
         //CADASTRAR CLIENTE
         ClientePF rachel = new ClientePF("Rachel", "25", TipoDocumento.tipoDocumento.CPF, "56985748575", "259595", "RUA CANADÁ, 258");
